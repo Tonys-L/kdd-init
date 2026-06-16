@@ -31,29 +31,6 @@ alwaysApply: true
 
 ---
 
-复制：
-
-```text
-templates/standards/design-principles.md
-```
-
-到：
-
-```text
-.cursor/rules/design-principles.mdc
-```
-
-在文件**最开头**添加以下 frontmatter：
-
-```yaml
----
-description: 系统架构设计原则，设计决策时必须遵循
-alwaysApply: true
----
-```
-
----
-
 ## Frontmatter 说明
 
 | 字段 | 说明 |
@@ -78,6 +55,5 @@ alwaysApply: false
 确认以下文件存在且包含 frontmatter：
 
 - `.cursor/rules/kdd-workflow.mdc`
-- `.cursor/rules/design-principles.mdc`
 
 在 Cursor Chat 中提问与项目架构相关的问题，验证是否遵循 KDD 工作流。

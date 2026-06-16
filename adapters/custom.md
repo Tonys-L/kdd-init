@@ -35,7 +35,6 @@ custom/path/
 
 ```text
 templates/standards/kdd-workflow.md → {用户目录}/kdd-workflow.md
-templates/standards/design-principles.md → {用户目录}/design-principles.md
 ```
 
 ### .mdc 格式
@@ -50,7 +49,6 @@ alwaysApply: true
 ```
 
 - `kdd-workflow.mdc`：description 填写 "KDD 七步门禁工作流，所有任务必须遵循"
-- `design-principles.mdc`：description 填写 "系统架构设计原则，设计决策时必须遵循"
 
 ---
 
@@ -59,6 +57,5 @@ alwaysApply: true
 确认以下文件存在于用户指定目录：
 
 - `{用户目录}/kdd-workflow.md`（或 `.mdc`）
-- `{用户目录}/design-principles.md`（或 `.mdc`）
 
 在对应 Agent 中提问与项目架构相关的问题，验证是否遵循 KDD 工作流。

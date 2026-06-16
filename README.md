@@ -69,8 +69,7 @@ kdd-init/
 │   └── custom.md                     #   自定义
 └── templates/
     ├── standards/                    # AI 规则文件
-    │   ├── kdd-workflow.md           #   七步门禁工作流
-    │   └── design-principles.md      #   设计原则
+    │   └── kdd-workflow.md           #   七步门禁工作流
     └── knowledge-base/               # 知识库模板
         ├── README.md                 #   知识库导航
         ├── project-context/          #   项目上下文（核心）
@@ -97,6 +96,7 @@ kdd-init/
         │   └── data-flows.md         #     数据流向
         ├── development-guide/        #   开发规范（核心）
         │   ├── README.md             #     TL;DR + 索引
+        │   ├── design-principles.md  #     设计原则
         │   ├── code-standards.md     #     代码规范
         │   ├── architecture-rules.md #     架构规范
         │   └── testing.md            #     测试规范

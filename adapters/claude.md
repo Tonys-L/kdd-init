@@ -6,27 +6,10 @@
 CLAUDE.md
 ```
 
-内容为以下两个文件的内容合并：
+内容为以下文件的内容：
 
-1. `templates/standards/kdd-workflow.md`
-2. `templates/standards/design-principles.md`
-
-合并顺序：workflow → principles
-
----
-
-## 合并格式
-
-两个文件之间使用分隔线连接：
-
-```markdown
-[workflow 内容]
-
----
-
-# === 设计原则 ===
-
-[principles 内容]
+```text
+templates/standards/kdd-workflow.md
 ```
 
 在文件开头添加：
@@ -39,6 +22,7 @@ CLAUDE.md
 - docs/knowledge-base/README.md
 - docs/knowledge-base/architecture-overview/
 - docs/knowledge-base/development-guide/
+- docs/knowledge-base/development-guide/design-principles.md
 ```
 
 ---
@@ -51,12 +35,6 @@ CLAUDE.md
 ---
 
 [workflow 内容]
-
----
-
-# === 设计原则 ===
-
-[principles 内容]
 ```
 
 ---

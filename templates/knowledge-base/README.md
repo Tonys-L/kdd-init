@@ -95,6 +95,7 @@
 | 文件 | 内容 |
 |------|------|
 | README.md | TL;DR + 索引 |
+| design-principles.md | 设计原则、三层隔离、避免过度设计、变更成本 |
 | code-standards.md | 命名、文件组织、代码风格、注释 |
 | architecture-rules.md | 分层规则、依赖规则、模块边界、错误处理 |
 | testing.md | 测试规范、开发流程、代码审查、提交规范 |

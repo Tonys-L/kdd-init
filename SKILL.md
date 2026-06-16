@@ -1,8 +1,9 @@
 ---
 
 name: "kdd-init"
-description: "Initialize Knowledge Driven Development (KDD) project structure."
--------------------------------------------------------------------------------
+description: "初始化知识库驱动开发（KDD）项目结构"
+
+---
 
 # KDD Init
 
@@ -53,7 +54,11 @@ docs/knowledge-base/
 读取：
 
 ```text
-adapters/{agent}.md
+adapters/trae.md        # 1. Trae
+adapters/cursor.md      # 2. Cursor
+adapters/claude.md      # 3. Claude Code
+adapters/copilot.md     # 4. GitHub Copilot
+adapters/custom.md      # 5. Custom
 ```
 
 按照其中定义执行。
@@ -67,33 +72,26 @@ adapters/{agent}.md
 优先填充核心文档：
 
 ```text
-project-context.md
-
-business-capabilities.md
-
-domain-model.md
-
-architecture-overview.md
+project-context/
+business-capabilities/
+domain-model/
+architecture-overview/
 ```
 
 根据代码实际情况继续填充：
 
 ```text
-development-guide.md
-
-data-model.md
-
+development-guide/
+data-model/
 glossary.md
 ```
 
 如果项目存在对应场景，继续填充条件文档：
 
 ```text
-service-specs.md
-
-api-contracts.md
-
-protocol-docs.md
+service-specs/
+api-contracts/
+protocol-docs/
 ```
 
 无法从代码推断的内容保留占位符，提醒用户补充。
@@ -105,3 +103,43 @@ protocol-docs.md
 ## 第五步：完成初始化
 
 输出创建结果和知识库填充情况。
+
+---
+
+### 质量检查
+
+生成知识库后，必须执行以下检查：
+
+```text
+□ 核心文档是否都有实质内容（非纯占位符）
+□ project-context/ 是否已填写项目目标和当前阶段
+□ business-capabilities/ 是否已识别核心业务能力
+□ domain-model/ 是否已定义核心实体
+□ architecture-overview/ 是否已描述分层结构
+□ 各文档变更记录是否已填写初始化日期
+□ 文档间引用是否有效（无死引用）
+□ 代码实现与文档描述是否一致（分层结构、模块职责、接口定义）
+```
+
+输出检查结果：
+
+```text
+【初始化结果】
+
+已创建文件：
+- docs/knowledge-base/project-context/README.md
+- docs/knowledge-base/project-context/goals.md
+- ...
+
+已填充内容：
+- project-context/: [已填写 / 部分填写 / 仅占位符]
+- business-capabilities/: [已填写 / 部分填写 / 仅占位符]
+- ...
+
+质量检查：
+- [通过项] / [未通过项]
+
+待用户补充：
+- project-context/goals.md 中的 [具体占位符]
+- domain-model/invariants.md 中的 [具体占位符]
+```

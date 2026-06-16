@@ -23,6 +23,7 @@ KDD 通过建立项目知识库，让 AI 在每次任务前先阅读知识、理
 文档先于实现
 测试保证质量
 代码与知识同步
+设计与实现一致
 ```
 
 ## 工作流程
@@ -47,8 +48,9 @@ KDD 通过建立项目知识库，让 AI 在每次任务前先阅读知识、理
 
 1. 创建知识库目录
 2. 选择你使用的 Agent（Trae / Cursor / Claude Code / GitHub Copilot / Custom）
-3. AI 自动分析代码，生成知识库文档
-4. 完成初始化
+3. 加载对应 Agent 适配器
+4. AI 自动分析代码，生成知识库文档
+5. 完成初始化
 
 ### 3. 开始开发
 
@@ -63,6 +65,7 @@ kdd-init/
 │   ├── trae.md                       #   Trae
 │   ├── cursor.md                     #   Cursor
 │   ├── claude.md                     #   Claude Code
+│   ├── copilot.md                    #   GitHub Copilot
 │   └── custom.md                     #   自定义
 └── templates/
     ├── standards/                    # AI 规则文件
@@ -70,16 +73,49 @@ kdd-init/
     │   └── design-principles.md      #   设计原则
     └── knowledge-base/               # 知识库模板
         ├── README.md                 #   知识库导航
-        ├── business-capabilities.md  #   业务能力（核心）
-        ├── domain-model.md           #   领域模型（核心）
-        ├── architecture-overview.md  #   架构总览（核心）
-        ├── development-guide.md      #   开发规范（核心）
-        ├── data-model.md             #   数据模型（核心）
-        ├── project-context.md        #   项目上下文（核心）
-        ├── glossary.md               #   术语表（核心）
-        ├── service-specs.md          #   服务规格（条件）
-        ├── api-contracts.md          #   API 契约（条件）
-        ├── protocol-docs.md          #   协议文档（条件）
+        ├── project-context/          #   项目上下文（核心）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── goals.md              #     项目目标
+        │   ├── constraints.md        #     已知约束
+        │   └── roadmap.md            #     未来规划
+        ├── business-capabilities/    #   业务能力（核心）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── background.md         #     业务背景
+        │   ├── capabilities.md       #     核心能力
+        │   ├── boundaries.md         #     能力边界
+        │   └── flows.md              #     业务流程
+        ├── domain-model/             #   领域模型（核心）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── entities.md           #     实体
+        │   ├── value-objects.md      #     值对象
+        │   ├── invariants.md         #     不变量（必读）
+        │   └── events.md             #     领域事件
+        ├── architecture-overview/    #   架构总览（核心）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── layers.md             #     分层结构
+        │   ├── dependencies.md       #     依赖规则
+        │   └── data-flows.md         #     数据流向
+        ├── development-guide/        #   开发规范（核心）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── code-standards.md     #     代码规范
+        │   ├── architecture-rules.md #     架构规范
+        │   └── testing.md            #     测试规范
+        ├── data-model/               #   数据模型（核心）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── tables.md             #     表结构
+        │   └── migration.md          #     迁移策略
+        ├── glossary.md               #   术语表（核心，单文件）
+        ├── service-specs/            #   服务规格（条件）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── services.md           #     服务定义
+        │   └── state-machines.md     #     状态流转
+        ├── api-contracts/            #   API 契约（条件）
+        │   ├── README.md             #     TL;DR + 索引
+        │   ├── endpoints.md          #     接口定义
+        │   └── errors.md             #     错误码
+        ├── protocol-docs/            #   协议文档（条件）
+        │   ├── README.md             #     TL;DR + 索引
+        │   └── messages.md           #     消息定义
         ├── adr/                      #   架构决策记录
         ├── traceability/             #   需求追踪矩阵
         └── lessons/                  #   经验教训库
@@ -93,9 +129,9 @@ kdd-init/
 
 | 文档 | 适用场景 |
 |------|---------|
-| service-specs.md | 复杂业务流程、状态机 |
-| api-contracts.md | 对外 HTTP 接口 |
-| protocol-docs.md | MQTT/WebSocket 等实时通信 |
+| service-specs/ | 复杂业务流程、状态机 |
+| api-contracts/ | 对外 HTTP 接口 |
+| protocol-docs/ | MQTT/WebSocket 等实时通信 |
 
 ## 支持的 Agent
 
@@ -112,13 +148,13 @@ kdd-init/
 KDD 遵循 6 条设计原则：
 
 1. **业务优先** — 从业务能力出发设计，而非从数据库、框架、技术栈出发
-2. **三层隔离** — 策略层（易变）→ 核心层（稳定）← 实现层（可替换）
-3. **职责优先** — 每个模块拥有明确职责，高内聚低耦合
+2. **职责优先** — 每个模块拥有明确职责，高内聚低耦合
+3. **三层隔离** — 策略层（易变）→ 核心层（稳定）← 技术层（可替换）。逻辑分层，业务内聚、变更隔离、依赖单向
 4. **避免过度设计** — Simple First, Evolve Later
-5. **控制变更成本** — 为已知变化设计，不为未知变化设计
-6. **按变化演进** — 解决问题 → 发现变化 → 抽象能力 → 持续演进
+5. **变更成本** — 为已知变化设计，不为未知变化设计
+6. **按变化演进** — 解决问题 → 发现变化 → 抽象能力 → 沉淀扩展点 → 持续演进
 
-原则冲突时按优先级裁决：业务 > 职责 > 变更成本 > 简单 > 扩展
+原则冲突时按优先级裁决：业务优先 > 职责优先 > 变更成本 > 简单优先 > 扩展优先
 
 ## License
 

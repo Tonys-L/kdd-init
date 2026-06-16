@@ -8,107 +8,18 @@
 
 # 核心文档
 
-## business-capabilities.md
+每个核心文档已拆分为目录结构：`README.md`（TL;DR + 索引）+ 若干小文件。
 
-业务背景、核心业务能力、业务边界、业务流程。
-
-适用于理解：
-
-* 系统解决什么问题
-* 系统提供哪些能力
-* 能力之间如何协作
-* 能力边界在哪里
-
----
-
-## domain-model.md
-
-领域模型定义。
-
-包含：
-
-* 实体（Entity）
-* 值对象（Value Object）
-* 枚举（Enum）
-* 领域事件（Domain Event）
-* 业务不变量（Invariant）
-
-适用于理解：
-
-* 核心业务对象
-* 对象关系
-* 业务规则
-
----
-
-## architecture-overview.md
-
-系统架构设计。
-
-包含：
-
-* 系统结构
-* 模块职责
-* 依赖关系
-* 数据流向
-* 扩展点
-
-适用于理解：
-
-* 系统如何组织
-* 模块如何协作
-* 依赖方向
-
----
-
-## development-guide.md
-
-工程开发规范。
-
-包含：
-
-* 项目结构
-* 编码规范
-* 测试规范
-* 工程约定
-
-适用于理解：
-
-* 如何开发
-* 如何测试
-* 如何组织代码
-
----
-
-## data-model.md
-
-数据模型设计。
-
-包含：
-
-* 数据结构
-* 存储模型
-* 表结构
-* 索引设计
-
-适用于理解：
-
-* 数据如何组织
-* 数据如何存储
-* 数据如何关联
-
----
-
-## project-context.md
+## project-context/
 
 项目上下文。
 
-包含：
-
-* 项目目标
-* 当前阶段
-* 已知约束
-* 已知未来规划
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| goals.md | 项目目标、目标用户 |
+| constraints.md | 人员/技术/环境约束 |
+| roadmap.md | 已知未来规划 |
 
 适用于理解：
 
@@ -118,15 +29,104 @@
 
 ---
 
+## business-capabilities/
+
+业务能力。
+
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| background.md | 业务背景、解决的问题 |
+| capabilities.md | 核心业务能力、支撑能力、外部依赖 |
+| boundaries.md | 能力边界、扩展点 |
+| flows.md | 业务流程 |
+
+适用于理解：
+
+* 系统解决什么问题
+* 系统提供哪些能力
+* 能力边界在哪里
+
+---
+
+## domain-model/
+
+领域模型。
+
+| 文件 | 内容 | 必读 |
+|------|------|------|
+| README.md | TL;DR + 索引 | |
+| entities.md | 实体定义、属性、业务规则 | |
+| value-objects.md | 值对象、枚举 | |
+| invariants.md | 业务不变量 | **是** |
+| events.md | 领域事件、聚合关系 | |
+
+适用于理解：
+
+* 核心业务对象
+* 对象关系
+* 业务规则
+
+---
+
+## architecture-overview/
+
+架构总览。
+
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| layers.md | 架构风格、分层结构、各层职责 |
+| dependencies.md | 依赖规则 |
+| data-flows.md | 数据流向、扩展点设计 |
+
+适用于理解：
+
+* 系统如何组织
+* 模块如何协作
+* 依赖方向
+
+---
+
+## development-guide/
+
+开发规范。
+
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| code-standards.md | 命名、文件组织、代码风格、注释 |
+| architecture-rules.md | 分层规则、依赖规则、模块边界、错误处理 |
+| testing.md | 测试规范、开发流程、代码审查、提交规范 |
+
+适用于理解：
+
+* 如何开发
+* 如何测试
+* 如何组织代码
+
+---
+
+## data-model/
+
+数据模型。
+
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| tables.md | 核心表结构、索引设计 |
+| migration.md | 存储策略、数据迁移 |
+
+适用于理解：
+
+* 数据如何组织
+* 数据如何存储
+
+---
+
 ## glossary.md
 
-术语表。
-
-包含：
-
-* 业务术语
-* 技术术语
-* 缩写定义
+术语表（本身不大，保持单文件）。
 
 适用于统一项目语言。
 
@@ -134,51 +134,44 @@
 
 # 条件文档
 
-根据项目特点按需创建。
+根据项目特点按需创建。不涉及时仅读 README.md 的 TL;DR 即可。
 
----
+## service-specs/
 
-## service-specs.md
+服务规格。
 
-服务规格说明。
-
-包含：
-
-* 领域服务
-* 状态机
-* 跨实体流程
-* 业务编排逻辑
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| services.md | 服务定义、职责、依赖、接口 |
+| state-machines.md | 状态流转 |
 
 适用于复杂业务流程场景。
 
 ---
 
-## api-contracts.md
+## api-contracts/
 
-API 契约定义。
+API 契约。
 
-包含：
-
-* HTTP API
-* 请求模型
-* 响应模型
-* 错误码定义
-* 兼容性约束
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| endpoints.md | 接口定义、请求/响应参数 |
+| errors.md | 错误码、响应格式 |
 
 适用于对外接口场景。
 
 ---
 
-## protocol-docs.md
+## protocol-docs/
 
-协议定义。
+协议文档。
 
-包含：
-
-* MQTT
-* WebSocket
-* TCP/UDP
-* 自定义协议
+| 文件 | 内容 |
+|------|------|
+| README.md | TL;DR + 索引 |
+| messages.md | 连接信息、消息格式、消息详情 |
 
 适用于实时通信场景。
 
@@ -193,13 +186,6 @@ adr/
 ```
 
 用于记录重要架构决策。
-
-每个 ADR 应描述：
-
-* 背景
-* 方案
-* 决策
-* 影响
 
 详见：
 
@@ -248,3 +234,41 @@ lessons/
 * 实践经验
 
 帮助项目持续积累经验并避免重复踩坑。
+
+---
+
+# 健康度检查
+
+定期或在重大变更后，执行以下检查确保知识库与代码保持一致：
+
+```text
+□ 每个核心文档是否都有实质内容（非纯占位符）
+□ 变更记录是否与代码提交历史对应
+□ 文档间交叉引用是否有效（无死引用）
+□ glossary.md 中的术语是否在其他文档中一致使用
+□ 是否存在超过 30 天未更新但代码已变更的文档
+□ 是否存在标记为"未来规划"但已实现的功能（应移入正式文档）
+□ 代码实现与文档描述是否一致（分层结构、模块职责、接口定义）
+```
+
+发现不一致时，优先更新知识库，再继续开发。
+
+---
+
+# 文档联动规则
+
+修改一个文档时，必须联动检查相关文档：
+
+| 修改了 | 必须检查 |
+|--------|----------|
+| `project-context/` | `business-capabilities/`、`architecture-overview/`、`development-guide/` |
+| `business-capabilities/` | `domain-model/`、`architecture-overview/`、`service-specs/` |
+| `domain-model/` | `data-model/`、`business-capabilities/`、`service-specs/`、`glossary.md` |
+| `architecture-overview/` | `development-guide/`、`domain-model/`、`business-capabilities/` |
+| `development-guide/` | `architecture-overview/` |
+| `api-contracts/` | `domain-model/`、`service-specs/` |
+| `data-model/` | `domain-model/`、`api-contracts/` |
+| `service-specs/` | `domain-model/`、`api-contracts/`、`protocol-docs/` |
+| `protocol-docs/` | `service-specs/`、`api-contracts/` |
+
+联动检查不意味着必须修改，而是确认是否需要同步更新。

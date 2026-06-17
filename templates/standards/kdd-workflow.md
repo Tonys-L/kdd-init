@@ -55,7 +55,7 @@
 
 # 术语定义
 
-关键术语定义详见 `knowledge-base/glossary.md`，以下为本工作流高频术语速查：
+关键术语定义详见 `{{KB_PATH}}/glossary.md`，以下为本工作流高频术语速查：
 
 | 概念 | 定义 |
 |------|------|
@@ -122,31 +122,31 @@
 项目知识地图：
 
 ```text
-docs/knowledge-base/README.md
+{{KB_PATH}}/README.md
 ```
 
 项目上下文：
 
 ```text
-docs/knowledge-base/project-context/
+{{KB_PATH}}/project-context/
 ```
 
 架构总览：
 
 ```text
-docs/knowledge-base/architecture-overview/
+{{KB_PATH}}/architecture-overview/
 ```
 
 工程开发规范：
 
 ```text
-docs/knowledge-base/development-guide/
+{{KB_PATH}}/development-guide/
 ```
 
 设计原则：
 
 ```text
-docs/knowledge-base/development-guide/design-principles.md
+{{KB_PATH}}/development-guide/design-principles.md
 ```
 
 根据任务内容继续定位并阅读相关知识库文档。
@@ -193,10 +193,10 @@ docs/knowledge-base/development-guide/design-principles.md
 
 必须完成以下操作：
 
-1. 阅读 docs/knowledge-base/README.md
+1. 阅读 {{KB_PATH}}/README.md
 2. 定位与任务相关的文档
 3. 阅读相关文档
-4. 阅读经验教训库（docs/knowledge-base/lessons/README.md），按业务分类匹配索引
+4. 阅读经验教训库（{{KB_PATH}}/lessons/README.md），按业务分类匹配索引
 5. 理解现有设计
 
 ---
@@ -230,7 +230,7 @@ docs/knowledge-base/development-guide/design-principles.md
 
 **读取策略**：
 
-1. 读取 `knowledge-base/README.md`，了解文档全貌
+1. 读取 `{{KB_PATH}}/README.md`，了解文档全貌
 2. 读取相关目录的 `README.md`，通过 TL;DR 和文件索引定位需要的文件
 3. **核心文档目录（project-context / business-capabilities / domain-model / architecture-overview / development-guide / data-model / glossary.md）：按文件索引定位，只读与任务相关的文件。`invariants.md` 必读**
 4. **条件文档目录（service-specs / api-contracts / protocol-docs）：不涉及时仅读 README.md 的 TL;DR**
@@ -238,7 +238,7 @@ docs/knowledge-base/development-guide/design-principles.md
 
 **安全规则**：
 
-- `domain-model/invariants.md` 是必读文件，任何任务都必须阅读
+- `{{KB_PATH}}/domain-model/invariants.md` 是必读文件，任何任务都必须阅读
 - README.md 中的 TL;DR 如果不够明确，必须展开阅读对应文件
 - 条件文档仅在确认不涉及后才可跳过
 
@@ -247,23 +247,23 @@ docs/knowledge-base/development-guide/design-principles.md
 ```text
 任务：新增用户注册功能
 
-1. 读取 knowledge-base/README.md，定位相关目录
+1. 读取 {{KB_PATH}}/README.md，定位相关目录
 
 2. 读取相关目录的 README.md：
-   - project-context/README.md → 了解项目约束
-   - business-capabilities/README.md → TL;DR: 核心能力：用户管理、设备控制 ⚠️ 设备控制不包含设备管理
-   - domain-model/README.md → TL;DR: 核心实体：User、Device ⚠️ 订单金额必须大于0
+   - {{KB_PATH}}/project-context/README.md → 了解项目约束
+   - {{KB_PATH}}/business-capabilities/README.md → TL;DR: 核心能力：用户管理、设备控制 ⚠️ 设备控制不包含设备管理
+   - {{KB_PATH}}/domain-model/README.md → TL;DR: 核心实体：User、Device ⚠️ 订单金额必须大于0
 
 3. 按文件索引定位，读取相关文件：
-   - domain-model/invariants.md（必读）
-   - business-capabilities/capabilities.md（任务相关）
-   - business-capabilities/boundaries.md（任务相关）
-   - architecture-overview/dependencies.md（任务相关）
+   - {{KB_PATH}}/domain-model/invariants.md（必读）
+   - {{KB_PATH}}/business-capabilities/capabilities.md（任务相关）
+   - {{KB_PATH}}/business-capabilities/boundaries.md（任务相关）
+   - {{KB_PATH}}/architecture-overview/dependencies.md（任务相关）
 
 4. 条件文档，按需判断：
-   - api-contracts/README.md → 涉及新增注册接口，读取 endpoints.md
-   - service-specs/README.md → 不涉及状态机，仅保留 TL;DR
-   - protocol-docs/README.md → 不涉及协议，仅保留 TL;DR
+   - {{KB_PATH}}/api-contracts/README.md → 涉及新增注册接口，读取 endpoints.md
+   - {{KB_PATH}}/service-specs/README.md → 不涉及状态机，仅保留 TL;DR
+   - {{KB_PATH}}/protocol-docs/README.md → 不涉及协议，仅保留 TL;DR
 ```
 
 ---
@@ -471,7 +471,7 @@ docs/knowledge-base/development-guide/design-principles.md
 
 ## 原则冲突裁决
 
-设计原则详见 `knowledge-base/development-guide/design-principles.md`。
+设计原则详见 `{{KB_PATH}}/development-guide/design-principles.md`。
 
 当多个原则发生冲突时，按以下优先级裁决：
 
@@ -616,7 +616,7 @@ docs/knowledge-base/development-guide/design-principles.md
 
 ## 文档联动规则
 
-修改一个文档时，必须联动检查相关文档。详见 `knowledge-base/README.md` 中的文档联动规则表。
+修改一个文档时，必须联动检查相关文档。详见 `{{KB_PATH}}/README.md` 中的文档联动规则表。
 
 ---
 
@@ -686,7 +686,7 @@ docs/knowledge-base/development-guide/design-principles.md
 
 # 知识库健康度检查
 
-定期或在重大变更后，执行健康度检查。详见 `knowledge-base/README.md` 中的健康度检查清单。
+定期或在重大变更后，执行健康度检查。详见 `{{KB_PATH}}/README.md` 中的健康度检查清单。
 
 ---
 

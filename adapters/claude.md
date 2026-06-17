@@ -12,6 +12,8 @@ CLAUDE.md
 templates/standards/kdd-workflow.md
 ```
 
+**占位符替换**：将文件中所有 `{{KB_PATH}}` 替换为用户在第一步输入的知识库路径（如 `docs/knowledge-base`）。
+
 在文件开头添加：
 
 ```text
@@ -19,10 +21,10 @@ templates/standards/kdd-workflow.md
 
 开始任何任务前必须阅读：
 
-- docs/knowledge-base/README.md
-- docs/knowledge-base/architecture-overview/
-- docs/knowledge-base/development-guide/
-- docs/knowledge-base/development-guide/design-principles.md
+- {{KB_PATH}}/README.md
+- {{KB_PATH}}/architecture-overview/
+- {{KB_PATH}}/development-guide/
+- {{KB_PATH}}/development-guide/design-principles.md
 ```
 
 ---

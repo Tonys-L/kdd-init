@@ -37,6 +37,8 @@ custom/path/
 templates/standards/kdd-workflow.md → {用户目录}/kdd-workflow.md
 ```
 
+**占位符替换**：将文件中所有 `{{KB_PATH}}` 替换为用户在第一步输入的知识库路径（如 `docs/knowledge-base`）。
+
 ### .mdc 格式
 
 复制后需在文件最开头添加 frontmatter：
@@ -49,6 +51,8 @@ alwaysApply: true
 ```
 
 - `kdd-workflow.mdc`：description 填写 "KDD 七步门禁工作流，所有任务必须遵循"
+
+**占位符替换**：将文件中所有 `{{KB_PATH}}` 替换为用户在第一步输入的知识库路径（如 `docs/knowledge-base`）。
 
 ---
 

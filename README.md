@@ -34,7 +34,7 @@ KDD 通过建立项目知识库，让 AI 在每次任务前先阅读知识、理
 知识库阅读 → 影响分析 → 设计方案 → 用户确认 → 开发实现 → 测试验证 → 知识库同步
 ```
 
-纯 UI 调整可走轻量门禁，跳过完整流程。
+纯 UI 调整可走轻量门禁，走简化流程。
 
 ## 快速开始
 
@@ -121,7 +121,7 @@ kdd-init/
         └── lessons/                  #   经验教训库
 ```
 
-### 核心文档 vs 条件文档
+### 文档分类
 
 **核心文档**：所有项目都需要，初始化时自动生成。
 
@@ -133,6 +133,14 @@ kdd-init/
 | api-contracts/ | 对外 HTTP 接口 |
 | protocol-docs/ | MQTT/WebSocket 等实时通信 |
 
+**积累文档**：初始化时创建空目录，随项目演进持续积累：
+
+| 文档 | 用途 |
+|------|------|
+| adr/ | 架构决策记录，做出重要技术决策时新增 |
+| traceability/ | 需求追踪矩阵，新增需求/ADR 时更新 |
+| lessons/ | 经验教训库，踩坑/复盘时新增 |
+
 ## 支持的 Agent
 
 | Agent | 规则目录 | 说明 |
@@ -140,7 +148,7 @@ kdd-init/
 | Trae | `.trae/rules/` | 直接复制 |
 | Cursor | `.cursor/rules/` | 后缀改为 .mdc |
 | Claude Code | `CLAUDE.md` | 合并为单文件 |
-| GitHub Copilot | `.github/` | 直接复制 |
+| GitHub Copilot | `.github/copilot-instructions.md` | 重命名文件 |
 | Custom | 用户指定 | 直接复制 |
 
 ## 设计原则

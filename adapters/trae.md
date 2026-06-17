@@ -12,6 +12,8 @@ templates/standards/kdd-workflow.md
 .trae/rules/kdd-workflow.md
 ```
 
+**占位符替换**：将文件中所有 `{{KB_PATH}}` 替换为用户在第一步输入的知识库路径（如 `docs/knowledge-base`）。
+
 ---
 
 ## 验证

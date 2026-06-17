@@ -20,6 +20,8 @@ templates/standards/kdd-workflow.md
 .cursor/rules/kdd-workflow.mdc
 ```
 
+**占位符替换**：将文件中所有 `{{KB_PATH}}` 替换为用户在第一步输入的知识库路径（如 `docs/knowledge-base`）。
+
 在文件**最开头**添加以下 frontmatter：
 
 ```yaml

@@ -4,7 +4,7 @@
 
 | 编号 | 标题 | 业务分类 | 状态 | 影响模块 | 日期 |
 |------|------|----------|------|----------|------|
-| <!-- ADR-001 --> | <!-- 标题 --> | <!-- 对应 business-capabilities/capabilities.md 中的能力 --> | <!-- Draft/Proposed/Accepted/Deprecated/Superseded --> | <!-- 模块 --> | <!-- YYYY-MM-DD --> |
+| <!-- ADR-001 --> | <!-- 标题 --> | <!-- 对应 boundaries.md 中的能力 --> | <!-- Draft/Proposed/Accepted/Deprecated/Superseded --> | <!-- 模块 --> | <!-- YYYY-MM-DD --> |
 
 ## ADR 生命周期
 
@@ -62,7 +62,7 @@ Draft → Proposed → Accepted → Deprecated → Superseded
 1. 在 `adr/` 目录下创建文件，命名格式：`NNN-简短标题.md`
 2. 编号接续当前最大编号
 3. 更新本索引的标题、业务分类、状态、影响模块和日期
-4. 填写业务分类（对应 business-capabilities/capabilities.md 中的能力名称）
+4. 填写业务分类（对应 boundaries.md 中的能力名称）
 
 ---
 

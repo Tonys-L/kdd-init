@@ -22,9 +22,8 @@ templates/standards/kdd-workflow.md
 开始任何任务前必须阅读：
 
 - {{KB_PATH}}/README.md
-- {{KB_PATH}}/architecture-overview/
-- {{KB_PATH}}/development-guide/
-- {{KB_PATH}}/development-guide/design-principles.md
+- {{KB_PATH}}/constraints.md
+- {{KB_PATH}}/glossary.md
 ```
 
 ---

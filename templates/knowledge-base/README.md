@@ -1,255 +1,115 @@
 # Knowledge Base
 
-本目录存放项目知识库。
+项目知识库。记录代码无法表达的内容：约束、不变量、边界和术语。
 
-知识库用于记录项目事实、业务知识、架构设计、领域模型、技术决策和历史经验。
+---
+
+# 项目概览
+
+> ⚠️ AI 首次接触项目时必须阅读本节，理解业务上下文后再读代码。
+
+## 系统定位
+
+<!-- 一句话描述系统解决什么业务问题，为谁解决 -->
+
+## 核心业务关系
+
+<!-- 描述核心实体之间的关系，帮助 AI 理解跨模块影响 -->
+<!-- 必须记录跨模块影响链：修改 A 会影响 B 的什么 -->
+
+| 模块 | 关联模块 | 影响方向 | 影响说明 |
+|------|----------|----------|----------|
+| <!-- 订单 --> | <!-- 库存 --> | <!-- 订单→库存 --> | <!-- 订单支付后触发库存扣减 --> |
+| <!-- 订单 --> | <!-- 支付 --> | <!-- 订单→支付 --> | <!-- 订单创建后发起支付 --> |
+
+## 项目阶段
+
+<!-- PoC / MVP / Beta / Production -->
+<!-- 影响设计决策：MVP 阶段优先简单实现，Production 阶段优先稳定性和扩展性 -->
 
 ---
 
 # 核心文档
 
-每个核心文档已拆分为目录结构：`README.md`（TL;DR + 索引）+ 若干小文件。
+## constraints.md
 
-## project-context/
+约束。**任何任务都必须阅读。**
 
-项目上下文。
+包含：
 
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| goals.md | 项目目标、目标用户 |
-| constraints.md | 人员/技术/环境约束 |
-| roadmap.md | 已知未来规划 |
+- 设计原则与优先级裁决
+- 架构约束（三层隔离、依赖方向、模块边界）
+- 业务不变量
+- 禁止事项
+- 项目约束
+- 测试约束
 
-适用于理解：
-
-* 项目解决什么问题
-* 项目处于什么阶段
-* 有哪些约束条件
-
----
-
-## business-capabilities/
-
-业务能力。
-
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| background.md | 业务背景、解决的问题 |
-| capabilities.md | 核心业务能力、支撑能力、外部依赖 |
-| boundaries.md | 能力边界、扩展点 |
-| flows.md | 业务流程 |
-
-适用于理解：
-
-* 系统解决什么问题
-* 系统提供哪些能力
-* 能力边界在哪里
-
----
-
-## domain-model/
-
-领域模型。
-
-| 文件 | 内容 | 必读 |
-|------|------|------|
-| README.md | TL;DR + 索引 | |
-| entities.md | 实体定义、属性、业务规则 | |
-| value-objects.md | 值对象、枚举 | |
-| invariants.md | 业务不变量 | **是** |
-| events.md | 领域事件、聚合关系 | |
-
-适用于理解：
-
-* 核心业务对象
-* 对象关系
-* 业务规则
-
----
-
-## architecture-overview/
-
-架构总览。
-
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| layers.md | 架构风格、分层结构、各层职责 |
-| dependencies.md | 依赖规则 |
-| data-flows.md | 数据流向、扩展点设计 |
-
-适用于理解：
-
-* 系统如何组织
-* 模块如何协作
-* 依赖方向
-
----
-
-## development-guide/
-
-开发规范。
-
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| design-principles.md | 设计原则、三层隔离、避免过度设计、变更成本 |
-| code-standards.md | 命名、文件组织、代码风格、注释 |
-| architecture-rules.md | 分层规则、依赖规则、模块边界、错误处理 |
-| testing.md | 测试规范、开发流程、代码审查、提交规范 |
-
-适用于理解：
-
-* 如何开发
-* 如何测试
-* 如何组织代码
-
----
-
-## data-model/
-
-数据模型。
-
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| tables.md | 核心表结构、索引设计 |
-| migration.md | 存储策略、数据迁移 |
-
-适用于理解：
-
-* 数据如何组织
-* 数据如何存储
+适用于理解：什么不能做、什么必须遵守。
 
 ---
 
 ## glossary.md
 
-术语表（本身不大，保持单文件）。
+术语表。
 
-适用于统一项目语言。
+适用于统一项目语言，防止概念混淆。
 
 ---
 
 # 条件文档
 
-根据项目特点按需创建。不涉及时仅读 README.md 的 TL;DR 即可。
+根据项目需要创建。不涉及时无需创建。
 
-## service-specs/
+## boundaries.md
 
-服务规格。
+能力边界。
 
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| services.md | 服务定义、职责、依赖、接口 |
-| state-machines.md | 状态流转 |
+适用于理解：系统提供哪些能力、能力边界在哪里、哪些是外部依赖。
 
-适用于复杂业务流程场景。
+创建条件：系统与外部系统有复杂交互，或内部能力边界容易混淆。
 
 ---
 
-## api-contracts/
+## flows.md
 
-API 契约。
+业务流程与状态机。
 
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| endpoints.md | 接口定义、请求/响应参数 |
-| errors.md | 错误码、响应格式 |
+适用于理解：复杂业务流程、状态流转规则、禁止的状态转换。
 
-适用于对外接口场景。
+创建条件：存在多步骤业务流程或复杂状态机。
 
 ---
 
-## protocol-docs/
+# 积累文档
 
-协议文档。
+初始化时创建空目录，随项目演进持续积累。
 
-| 文件 | 内容 |
-|------|------|
-| README.md | TL;DR + 索引 |
-| messages.md | 连接信息、消息格式、消息详情 |
+## adr/
 
-适用于实时通信场景。
+架构决策记录。做出重要技术决策时新增。
 
----
-
-# ADR
-
-目录：
-
-```text
-adr/
-```
-
-用于记录重要架构决策。
-
-详见：
-
-```text
-adr/README.md
-```
+详见 `adr/README.md`。
 
 ---
 
-# Traceability
+## lessons/
 
-目录：
+经验教训库。踩坑/复盘时新增。
 
-```text
-traceability/
-```
-
-用于追踪：
-
-* 需求与业务分类的映射
-* 需求与 ADR 的映射
-* ADR 与代码模块的映射
-
-详见：
-
-```text
-traceability/README.md
-```
-
----
-
-# Lessons Learned
-
-目录：
-
-```text
-lessons/
-```
-
-用于记录：
-
-* Bug 复盘
-* 线上事故
-* 设计失误
-* 性能问题
-* 实践经验
-
-帮助项目持续积累经验并避免重复踩坑。
+详见 `lessons/README.md`。
 
 ---
 
 # 健康度检查
 
-定期或在重大变更后，执行以下检查确保知识库与代码保持一致：
+定期或在重大变更后，执行以下检查：
 
 ```text
-□ 每个核心文档是否都有实质内容（非纯占位符）
-□ 变更记录是否与代码提交历史对应
-□ 文档间交叉引用是否有效（无死引用）
-□ glossary.md 中的术语是否在其他文档中一致使用
-□ 是否存在超过 30 天未更新但代码已变更的文档
-□ 是否存在标记为"未来规划"但已实现的功能（应移入正式文档）
-□ 代码实现与文档描述是否一致（分层结构、模块职责、接口定义）
+□ constraints.md 中的不变量是否与代码一致
+□ 禁止事项是否被违反
+□ 术语是否在其他文档中一致使用
+□ 是否存在超过 30 天未更新但代码已变更的约束
+□ 代码实现与约束描述是否一致
 ```
 
 发现不一致时，优先更新知识库，再继续开发。
@@ -262,14 +122,10 @@ lessons/
 
 | 修改了 | 必须检查 |
 |--------|----------|
-| `project-context/` | `business-capabilities/`、`architecture-overview/`、`development-guide/` |
-| `business-capabilities/` | `domain-model/`、`architecture-overview/`、`service-specs/` |
-| `domain-model/` | `data-model/`、`business-capabilities/`、`service-specs/`、`glossary.md` |
-| `architecture-overview/` | `development-guide/`、`domain-model/`、`business-capabilities/` |
-| `development-guide/` | `architecture-overview/` |
-| `api-contracts/` | `domain-model/`、`service-specs/` |
-| `data-model/` | `domain-model/`、`api-contracts/` |
-| `service-specs/` | `domain-model/`、`api-contracts/`、`protocol-docs/` |
-| `protocol-docs/` | `service-specs/`、`api-contracts/` |
+| `constraints.md` | `glossary.md`、`boundaries.md`、`flows.md`、`lessons/` |
+| `boundaries.md` | `constraints.md`、`flows.md` |
+| `flows.md` | `constraints.md`、`boundaries.md`、本文件（核心业务关系） |
+| `glossary.md` | `constraints.md` |
+| 本文件（核心业务关系） | `boundaries.md`、`flows.md` |
 
 联动检查不意味着必须修改，而是确认是否需要同步更新。

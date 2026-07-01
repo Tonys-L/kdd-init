@@ -30,11 +30,11 @@
 
 ### 能力契约 (Capability Contract)
 
-核心层定义的业务能力接口，表达"能做什么"。对应知识库文档：`domain-model/`、`business-capabilities/`。示例：`UserRepository`（用户存储能力）。
+核心层定义的业务能力接口，表达"能做什么"。示例：`UserRepository`（用户存储能力）。
 
 ### 接口契约 (API Contract)
 
-对外暴露的 API 接口，表达"如何调用"。对应知识库文档：`api-contracts/`。示例：`POST /api/users`（创建用户接口）。
+对外暴露的 API 接口，表达"如何调用"。示例：`POST /api/users`（创建用户接口）。
 
 > 能力契约是内部的、面向领域的；接口契约是外部的、面向调用方的。
 

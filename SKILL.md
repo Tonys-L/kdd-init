@@ -2,7 +2,7 @@
 
 name: "kdd-init"
 description: "初始化知识库驱动开发（KDD）项目结构"
-version: "1.0.0"
+version: "2.0.0"
 
 ---
 
@@ -94,34 +94,45 @@ adapters/custom.md      # 5. Custom
 
 分析项目代码，尽可能自动填充知识库文档。
 
+知识库聚焦代码无法表达的内容：约束、不变量、边界和术语。
+
 优先填充核心文档：
 
 ```text
-project-context/
-business-capabilities/
-domain-model/
-architecture-overview/
+README.md         # 项目概览（系统定位、核心业务关系、项目阶段）（必填）
+constraints.md    # 约束、不变量、禁止事项（必填）
+glossary.md       # 术语表（必填）
 ```
 
-根据代码实际情况继续填充：
+根据项目需要判断是否创建条件文档：
 
 ```text
-development-guide/
-data-model/
-glossary.md
+boundaries.md     # 能力边界（系统与外部有复杂交互时创建）
+flows.md          # 业务流程与状态机（存在复杂流程/状态机时创建）
 ```
 
-如果项目存在对应场景，继续填充条件文档：
+### 架构状态检测与文档策略
 
-```text
-service-specs/
-api-contracts/
-protocol-docs/
-```
+分析代码结构，判断三层隔离实施状态，填入 `constraints.md` 架构状态字段：
 
-无法从代码推断的内容保留占位符，提醒用户补充。
+| 架构状态 | 判断依据 | 文档填充深度 |
+|----------|----------|-------------|
+| 已实施 | 核心层无技术依赖，业务规则内聚 | 只填充负空间（不变量、禁止事项、边界） |
+| 部分实施 | 部分模块已隔离，部分混合 | 已隔离模块只填充负空间；未隔离模块补充模块定位表 |
+| 未实施 | 业务逻辑与技术实现混合 | 补充模块定位表（模块职责、业务规则位置） |
 
-如果项目代码为空（新项目），则提醒用户优先填写核心文档。
+架构状态不是用户手动选择的，而是 AI 从代码结构中推断的。
+
+### 填充原则
+
+- 从代码中提取项目概览（系统定位、核心业务关系、项目阶段）
+- 从代码中提取架构约束（分层规则、依赖方向、模块边界）
+- 从代码中提取业务不变量（校验规则背后的业务原因）
+- 从代码中提取禁止事项（代码中不存在但不应存在的模式）
+- 无法从代码推断的内容保留占位符，提醒用户补充
+- 数据结构、API 定义、表结构等代码已表达的内容不写入文档
+
+如果项目代码为空（新项目），则提醒用户优先填写 README.md 项目概览和 constraints.md。
 
 ---
 
@@ -136,10 +147,12 @@ protocol-docs/
 生成知识库后，必须执行以下初始化检查：
 
 ```text
-□ project-context/ 是否已填写项目目标和当前阶段
-□ business-capabilities/ 是否已识别核心业务能力
-□ domain-model/ 是否已定义核心实体
-□ architecture-overview/ 是否已描述分层结构
+□ README.md 项目概览是否已填写系统定位、核心业务关系、项目阶段
+□ constraints.md 是否已填写架构状态（从代码结构推断）
+□ constraints.md 架构状态为"未实施"或"部分实施"时，是否已填写模块定位表
+□ constraints.md 是否已填写架构约束和业务不变量
+□ glossary.md 是否已定义核心术语
+□ 条件文档是否已根据项目需要判断创建
 □ 各文档变更记录是否已填写初始化日期
 ```
 
@@ -153,19 +166,24 @@ protocol-docs/
 知识库路径：{父目录}knowledge-base/
 
 已创建文件：
-- {父目录}knowledge-base/project-context/README.md
-- {父目录}knowledge-base/project-context/goals.md
+- {父目录}knowledge-base/constraints.md
+- {父目录}knowledge-base/glossary.md
+- {父目录}knowledge-base/adr/README.md
+- {父目录}knowledge-base/lessons/README.md
 - ...
 
 已填充内容：
-- project-context/: [已填写 / 部分填写 / 仅占位符]
-- business-capabilities/: [已填写 / 部分填写 / 仅占位符]
-- ...
+- README.md 项目概览: [已填写 / 部分填写 / 仅占位符]
+- constraints.md: [已填写 / 部分填写 / 仅占位符]
+- glossary.md: [已填写 / 部分填写 / 仅占位符]
+- boundaries.md: [已创建 / 未创建]
+- flows.md: [已创建 / 未创建]
 
 质量检查：
 - [通过项] / [未通过项]
 
 待用户补充：
-- project-context/goals.md 中的 [具体占位符]
-- domain-model/invariants.md 中的 [具体占位符]
+- README.md 项目概览中的 [具体占位符]
+- constraints.md 中的 [具体占位符]
+- glossary.md 中的 [具体占位符]
 ```
